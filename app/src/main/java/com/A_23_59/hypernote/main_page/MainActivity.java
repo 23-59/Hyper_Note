@@ -2,10 +2,14 @@ package com.A_23_59.hypernote.main_page;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,15 +18,15 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.A_23_59.hypernote.R;
-import com.A_23_59.hypernote.edit_page.Edit_Activity;
+import com.A_23_59.hypernote.add_page.Add_Activity;
 import com.A_23_59.hypernote.main_page.more_bottom_sheet.MoreBottomSheet;
 import com.A_23_59.hypernote.model.AppDataBase;
 import com.A_23_59.hypernote.model.Task;
 import com.A_23_59.hypernote.model.TaskDao;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements MainContract.ViewLayer, TaskAdapter.SendMoreDataToMainActivity {
 
@@ -30,18 +34,21 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     RecyclerView recyclerView;
 
-    TaskAdapter taskAdapter;
+   public static TaskAdapter taskAdapter;
 
     TaskDao taskDao;
 
-    LinearLayout emptyStateLayout;
+   public static ConstraintLayout emptyStateLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
+        MainActivity.setDefaultLocale(this,"fa");
+
         setContentView(R.layout.activity_main);
+
 
         taskDao=AppDataBase.getAppDataBase(this).getTaskDao();
 
@@ -109,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void startEditActivity() {
 
-        Intent intent=new Intent(MainActivity.this, Edit_Activity.class);
+        Intent intent=new Intent(MainActivity.this, Add_Activity.class);
 
         startActivityForResult(intent,1);
     }
@@ -124,11 +131,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void deleteTask(Task task) {
 
-    }
-
-    @Override
-    public void updateTask(Task task) {
-
+        taskAdapter.deleteTask(task);
     }
 
     @Override
@@ -176,14 +179,35 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void onMoreClicked(Task clickedTask) {
 
-        MoreBottomSheet bottomSheet=new MoreBottomSheet();
+        Bundle bundle=new Bundle();
 
-        bottomSheet.show(getSupportFragmentManager(),null);
+        bundle.putParcelable("clickedTask",clickedTask);
+
+        MoreBottomSheet moreBottomSheet=new MoreBottomSheet(this);
+
+        moreBottomSheet.setArguments(bundle);
+
+        moreBottomSheet.show(getSupportFragmentManager(),null);
     }
 
     @Override
     public void onChecked(Task task) {
 
      presenter.onChecked(task);
+    }
+
+    public static void setDefaultLocale(Activity activity,String languageCode){
+
+        Locale locale=new Locale(languageCode);
+
+        Locale.setDefault(locale);
+
+        Resources resources=activity.getResources();
+
+        Configuration configuration=resources.getConfiguration();
+
+        configuration.setLocale(locale);
+
+        resources.updateConfiguration(configuration,resources.getDisplayMetrics());
     }
 }

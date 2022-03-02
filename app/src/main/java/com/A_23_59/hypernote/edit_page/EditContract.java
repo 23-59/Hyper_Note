@@ -1,26 +1,22 @@
 package com.A_23_59.hypernote.edit_page;
 
-import android.view.View;
-
 import com.A_23_59.hypernote.model.Task;
 
 public interface EditContract {
 
-    interface ViewLayer{
+     interface ViewLayer{
 
-        void deleteStatus(boolean visibility);
-
-        void showErrorSnackBar();
+         void showSnackBar();
     }
 
-    interface PresenterLayer{
+     interface PresenterLayer{
 
-        void onAttach(EditContract.ViewLayer view);
+         void onAttach(EditContract.ViewLayer view);
 
-        void onDetach();
+         void onDetach();
 
-        void onConfirmButtonClicked(String taskDetail,Edit_Activity edit_activity);
+         void onConfirmButtonClicked(String result, EditActivity editActivity, Task task);
 
-        void onDeleteButtonClicked();
+         void onDeleteButtonClicked(Task task,EditActivity editActivity);
     }
 }

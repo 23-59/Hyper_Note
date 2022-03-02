@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Hyper Note</string>
+    <string name="search_task">Search Task...</string>
+    <string name="delete_all">Delete All</string>
+    <string name="add_task">Add Task</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="empty_state_title">Task List is Empty !</string>
+    <string name="empty_state_description">if you have some undone works, add some task to stay focused on your works :)</string>
+    <string name="task_detail">Task_Details…</string>
+    <string name="error_toast">task detail cannot be empty</string>
 </resources>

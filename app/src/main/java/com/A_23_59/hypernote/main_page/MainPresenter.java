@@ -1,23 +1,20 @@
 package com.A_23_59.hypernote.main_page;
 
 import android.content.Intent;
-import android.view.View;
 
 import com.A_23_59.hypernote.edit_page.EditPresenter;
 import com.A_23_59.hypernote.model.Task;
 import com.A_23_59.hypernote.model.TaskDao;
 
-import java.util.List;
-
 public class MainPresenter implements MainContract.PresenterLayer{
 
     MainContract.ViewLayer view;
 
-    TaskDao taskDao;
+  public static TaskDao taskDao;
 
     MainPresenter(TaskDao taskDao){
 
-     this.taskDao=taskDao;
+     MainPresenter.taskDao =taskDao;
     }
 
     @Override

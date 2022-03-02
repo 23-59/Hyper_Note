@@ -108,7 +108,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
     public void deleteTask(Task task){
 
-        short deleteIndex=(short) taskList.indexOf(task);
+        int deleteIndex= taskList.indexOf(task);
 
         taskList.remove(deleteIndex);
 
@@ -116,9 +116,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
     }
 
-    public void updateTask(Task task){
+    public void editTask(Task task){
 
-       short updateIndex=(short) taskList.indexOf(task);
+       int updateIndex= taskList.indexOf(task);
 
        taskList.set(updateIndex,task);
 

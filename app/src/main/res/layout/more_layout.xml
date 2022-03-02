@@ -23,7 +23,7 @@
             app:layout_constraintTop_toBottomOf="@+id/delete">
 
             <ImageView
-                android:id="@+id/iv_delete"
+                android:id="@+id/image_view_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -38,12 +38,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:text="Edit Task"
+                android:text="@string/edit_task"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_delete"
-                app:layout_constraintStart_toEndOf="@+id/iv_delete"
-                app:layout_constraintTop_toTopOf="@+id/iv_delete" />
+                app:layout_constraintBottom_toBottomOf="@+id/image_view_edit"
+                app:layout_constraintStart_toEndOf="@+id/image_view_edit"
+                app:layout_constraintTop_toTopOf="@+id/image_view_edit" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/iv_delete"
+                android:id="@+id/image_view_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -74,12 +74,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:text="Delete Task"
+                android:text="@string/delete_task"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_delete"
-                app:layout_constraintStart_toEndOf="@+id/iv_delete"
-                app:layout_constraintTop_toTopOf="@+id/iv_delete" />
+                app:layout_constraintBottom_toBottomOf="@+id/image_view_delete"
+                app:layout_constraintStart_toEndOf="@+id/image_view_delete"
+                app:layout_constraintTop_toTopOf="@+id/image_view_delete" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

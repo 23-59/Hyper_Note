@@ -1,57 +1,54 @@
 package com.A_23_59.hypernote.edit_page;
 
-import android.app.Activity;
-import android.content.Intent;
-
+import android.view.View;
+import com.A_23_59.hypernote.main_page.MainActivity;
+import com.A_23_59.hypernote.main_page.MainPresenter;
 import com.A_23_59.hypernote.model.Task;
 
-public class EditPresenter implements EditContract.PresenterLayer {
+public class EditPresenter  implements EditContract.PresenterLayer{
 
-    EditContract.ViewLayer viewLayer;
+    EditContract.ViewLayer view;
 
-   public static long id=0;
     @Override
     public void onAttach(EditContract.ViewLayer view) {
 
-        viewLayer=view;
-
-        viewLayer.deleteStatus(false);
+        this.view=view;
     }
 
     @Override
     public void onDetach() {
 
-        this.viewLayer=null;
     }
 
     @Override
-    public void onConfirmButtonClicked(String taskDetail,Edit_Activity edit_activity) {
+    public void onConfirmButtonClicked(String result, EditActivity editActivity, Task task) {
 
-        if (taskDetail.length()>0){
+        if (result.length()>0){
 
-            Intent intent=new Intent();
+            task.setTaskTitle(result);
 
-            Task task=new Task();
+            MainPresenter.taskDao.updateTask(task);
 
-            task.setTaskTitle(taskDetail);
+            MainActivity.taskAdapter.editTask(task);
 
-            intent.putExtra("task",task);
-
-            edit_activity.setResult(Activity.RESULT_OK,intent);
-
-            edit_activity.finish();
+            editActivity.finish();
         }
+        else {
 
-        else
-            viewLayer.showErrorSnackBar();
-
-
-
+            view.showSnackBar();
+        }
     }
 
     @Override
-    public void onDeleteButtonClicked() {
+    public void onDeleteButtonClicked(Task task,EditActivity editActivity) {
 
+        MainPresenter.taskDao.deleteTask(task);
+
+        MainActivity.taskAdapter.deleteTask(task);
+
+        editActivity.finish();
+
+        if (MainPresenter.taskDao.getTasks().size()==0)
+        MainActivity.emptyStateLayout.setVisibility(View.VISIBLE);
     }
-
 }

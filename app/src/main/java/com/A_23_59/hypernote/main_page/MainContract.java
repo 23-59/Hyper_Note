@@ -25,8 +25,6 @@ public interface MainContract {
 
         void deleteTask(Task task);
 
-        void updateTask(Task task);
-
         void searchTask(List<Task> tasks);
 
         void deleteAll();

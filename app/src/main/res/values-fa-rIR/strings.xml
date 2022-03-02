@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hyper Note</string>
+    <string name="search_task">جستجوی وظایف</string>
+    <string name="delete_all">حذف همه</string>
+    <string name="add_task">اضافه کردن وظیفه</string>
+    <string name="delete_task">پاک کردن وظیفه</string>
+    <string name="edit_task">ویرایش وظیفه</string>
+    <string name="empty_state_title">لیست وظایف خالیه !</string>
+    <string name="empty_state_description">اگه کاری میخوای انجام بدی‌ ، میتونی اونا رو به اینجا اضافه کنی تا حواست به کارهات باشه :)</string>
+    <string name="task_detail">جزئیات وظیفه...</string>
+    <string name="error_toast">جزئیات وظیفه نمی تواند خالی باشد</string>
+</resources>
