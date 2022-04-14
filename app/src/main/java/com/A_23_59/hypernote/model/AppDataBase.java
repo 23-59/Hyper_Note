@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(version = 1,exportSchema = false,entities = {Task.class} )
+@Database(version = 2,exportSchema = false,entities = {Task.class} )
 public abstract class AppDataBase extends RoomDatabase {
 
     private static AppDataBase appDataBase;

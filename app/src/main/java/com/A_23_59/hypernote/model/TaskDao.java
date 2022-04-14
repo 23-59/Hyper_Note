@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.RawQuery;
 import androidx.room.Update;
 
 import java.util.List;
@@ -17,6 +18,9 @@ public interface TaskDao {
     @Delete
     int deleteTask(Task task);
 
+    @Query("DELETE FROM TBL_TASK WHERE selectedMode=1")
+    int deleteSelectionFromDataBase();
+
     @Update
     int updateTask(Task task);
 
@@ -28,6 +32,11 @@ public interface TaskDao {
 
     @Query("DELETE FROM tbl_task")
     void clearAll();
+
+    @Query("UPDATE tbl_task set isCompleted=1")
+     void setChecked();
+
+
 
 
 

@@ -4,12 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_baseline_radio_button_unchecked_24.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/ic_hyper_note_01.xml" value="0.1655" />
         <entry key="app/src/main/res/drawable/ic_round_check_24.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_round_check_circle_outline_24.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ic_round_clear_all_24.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_round_delete_outline_24.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/ic_round_edit_24.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_round_info_24.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ic_round_search_24.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/item_gradient_background.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/search_background.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/toolbar_background.xml" value="0.166" />
         <entry key="app/src/main/res/font/amita.xml" value="0.3001266357112706" />
@@ -17,10 +21,10 @@
         <entry key="app/src/main/res/font/sail.xml" value="0.3001266357112706" />
         <entry key="app/src/main/res/layout/activity_add.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_edit.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.1363826232247285" />
         <entry key="app/src/main/res/layout/more_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/task_item_layout.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/task_item_layout.xml" value="0.5" />
         <entry key="app/src/main/res/menu/edit_actions.xml" value="0.25" />
       </map>
     </option>

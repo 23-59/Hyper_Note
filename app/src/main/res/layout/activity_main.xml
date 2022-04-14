@@ -14,15 +14,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="@color/purple_700"
+            android:layout_height="130dp"
+            android:background="#304FFE"
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_app_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/courgette"
@@ -31,6 +31,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/et_search_task"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,74 +60,150 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_toolbar_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:background="#00FFFFFF"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_round_delete_outline_24"
+                app:tint="#FFFFFF" />
+
+            <ImageButton
+                android:id="@+id/btn_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="#00FFFFFF"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_toolbar_delete"
+                app:layout_constraintStart_toEndOf="@+id/btn_toolbar_delete"
+                app:layout_constraintTop_toTopOf="@+id/btn_toolbar_delete"
+                app:srcCompat="@drawable/ic_round_done_all_24"
+                app:tint="@color/white" />
+
+            <CheckBox
+                android:id="@+id/checkBox_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:buttonTint="#FFFFFF"
+                android:foregroundTint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textColorLink="#FFFFFF"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_close" />
+
+            <TextView
+                android:id="@+id/tv_selected_items"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="10dp"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBox_all"
+                app:layout_constraintEnd_toStartOf="@+id/checkBox_all"
+                app:layout_constraintTop_toTopOf="@+id/checkBox_all" />
+
+            <ImageButton
+                android:id="@+id/btn_reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="#00FFFFFF"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_check"
+                app:layout_constraintStart_toEndOf="@+id/btn_check"
+                app:layout_constraintTop_toTopOf="@+id/btn_check"
+                app:srcCompat="@drawable/ic_round_history_24"
+                app:tint="#FFFFFF" />
+
+            <ImageButton
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="#00FFFFFF"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_reset"
+                app:layout_constraintStart_toEndOf="@+id/btn_reset"
+                app:layout_constraintTop_toTopOf="@+id/btn_reset"
+                app:srcCompat="@drawable/ic_round_close_24"
+                app:tint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn_select"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/intel_arabic_regular"
+                android:text="@string/select"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_app_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_app_name" />
+
+            <TextView
+                android:id="@+id/tv_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/all"
+                android:textColor="#FFFFFF"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/checkBox_all"
+                app:layout_constraintTop_toTopOf="@+id/checkBox_all" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <Button
-            android:id="@+id/btn_delete_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#287C7C7C"
-            android:clickable="true"
-            android:paddingLeft="16dp"
-            android:paddingTop="2dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="2dp"
-            android:text="@string/delete_all"
-            android:textColor="#A6FFFFFF"
-            app:cornerRadius="10dp"
-            app:icon="@drawable/ic_round_delete_outline_24"
-            app:iconPadding="5dp"
-            app:iconSize="25dp"
-            app:iconTint="#86FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            app:rippleColor="#BDBDBD"
-            app:strokeColor="#FF0303" />
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/fab_add_task"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="#4CAF50"
-            android:fontFamily="@font/intel_arabic_regular"
-            android:outlineSpotShadowColor="#4CAF50"
-            android:shadowRadius="24"
-            android:text="@string/add_task"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:elevation="24dp"
-            app:icon="@drawable/ic_round_add_24"
-            app:iconPadding="8dp"
-            app:iconSize="30dp"
-            app:iconTint="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_tasks"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layoutAnimation="@anim/layout_animation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_delete_all" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/empty_state_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/fab_add_task"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rv_tasks">
@@ -134,19 +211,22 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="top|center"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/empty_state"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                android:scaleType="center"
+                android:src="@drawable/ic_baseline_assignment_late_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#FFFFFF" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:gravity="center"
                 android:text="@string/empty_state_title"
                 android:textAlignment="center"
@@ -161,20 +241,41 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/intel_arabic_regular"
                 android:text="@string/empty_state_description"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_add_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#00C853"
+        android:fontFamily="@font/intel_arabic_regular"
+        android:outlineSpotShadowColor="#00C853"
+        android:shadowRadius="24"
+        android:stateListAnimator="@anim/layout_animation"
+        android:text="@string/add_task"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:elevation="24dp"
+        app:icon="@drawable/ic_round_add_24"
+        app:iconPadding="8dp"
+        app:iconSize="30dp"
+        app:iconTint="#FFFFFF"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

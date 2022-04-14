@@ -25,6 +25,16 @@ public interface MainContract {
 
         void deleteTask(Task task);
 
+        void startSelectionMode();
+
+        void deleteSelectionFromRecyclerView();
+
+        void resetSelectionFromRecyclerView();
+
+        void checkAllSelectionFromRecyclerView();
+
+        void exitSelectionMode();
+
         void searchTask(List<Task> tasks);
 
         void deleteAll();
@@ -51,7 +61,19 @@ public interface MainContract {
 
         void onSearch(String query);
 
+        void updateSelectedTasks(Task task);
+
         void onSearch();
+
+        void prepareSelectionMode();
+
+        void cancelSelectionMode();
+
+        void onDeleteSelectionClicked();
+
+        void onResetSelectionClicked(List<Task> selectedTasks);
+
+        void onCheckAllSelectionClicked(List<Task> selectedTasks);
 
         void onResultIsReceived(int requestCode, int resultCode, Intent intent);
 

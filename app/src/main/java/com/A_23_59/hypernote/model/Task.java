@@ -7,7 +7,8 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "tbl_task")
-public class Task implements Parcelable {
+public class
+Task implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
      long id;
@@ -15,6 +16,16 @@ public class Task implements Parcelable {
     private String taskTitle;
 
     private boolean isCompleted;
+
+    public boolean isSelectedMode() {
+        return selectedMode;
+    }
+
+    public void setSelectedMode(boolean selectedMode) {
+        this.selectedMode = selectedMode;
+    }
+
+    private boolean selectedMode;
 
     public long getId() {
         return id;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#4CAF50">
+    android:background="#00C853">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,6 +41,7 @@
                 android:text="@string/edit_task"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/image_view_edit"
                 app:layout_constraintStart_toEndOf="@+id/image_view_edit"
                 app:layout_constraintTop_toTopOf="@+id/image_view_edit" />
@@ -77,6 +78,7 @@
                 android:text="@string/delete_task"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/image_view_delete"
                 app:layout_constraintStart_toEndOf="@+id/image_view_delete"
                 app:layout_constraintTop_toTopOf="@+id/image_view_delete" />

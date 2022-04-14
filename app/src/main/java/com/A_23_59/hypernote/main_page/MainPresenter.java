@@ -2,9 +2,10 @@ package com.A_23_59.hypernote.main_page;
 
 import android.content.Intent;
 
-import com.A_23_59.hypernote.edit_page.EditPresenter;
 import com.A_23_59.hypernote.model.Task;
 import com.A_23_59.hypernote.model.TaskDao;
+
+import java.util.List;
 
 public class MainPresenter implements MainContract.PresenterLayer{
 
@@ -60,9 +61,76 @@ public class MainPresenter implements MainContract.PresenterLayer{
     }
 
     @Override
+    public void updateSelectedTasks(Task task) {
+
+        taskDao.updateTask(task);
+
+
+
+    }
+
+    @Override
     public void onSearch() {
 
     view.searchTask(taskDao.getTasks());
+    }
+
+    @Override
+    public void prepareSelectionMode() {
+
+        view.startSelectionMode();
+
+    }
+
+    @Override
+    public void cancelSelectionMode() {
+
+        view.exitSelectionMode();
+
+    }
+
+    @Override
+    public void onDeleteSelectionClicked() {
+        
+        taskDao.deleteSelectionFromDataBase();
+
+        view.deleteSelectionFromRecyclerView();
+
+        if (taskDao.getTasks().size()==0)
+            view.emptyState(true);
+
+    }
+
+    @Override
+    public void onResetSelectionClicked(List<Task> selectedTasks) {
+
+        for (Task t:
+                selectedTasks) {
+
+            t.setCompleted(false);
+
+            taskDao.updateTask(t);
+
+        }
+
+        view.resetSelectionFromRecyclerView();
+
+    }
+
+    @Override
+    public void onCheckAllSelectionClicked(List<Task> selectedTasks) {
+
+        for (Task t:
+             selectedTasks) {
+
+            t.setCompleted(true);
+
+            taskDao.updateTask(t);
+
+        }
+
+        view.checkAllSelectionFromRecyclerView();
+
     }
 
     @Override
