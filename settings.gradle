@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Hyper Note"
+rootProject.name = "HyperNote"
 include ':app'
