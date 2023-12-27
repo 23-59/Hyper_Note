@@ -49,6 +49,7 @@
                 android:buttonTint="#FFFFFF"
                 android:clickable="true"
                 android:ellipsize="end"
+                android:fontFamily="@font/iranyekan_regular"
                 android:foregroundTint="#FFFFFF"
                 android:maxLines="1"
                 android:paddingStart="5dp"

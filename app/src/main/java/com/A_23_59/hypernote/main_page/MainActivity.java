@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -215,6 +216,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         taskAdapter.deleteTask(task);
     }
 
+    @SuppressLint("SuspiciousIndentation")
     @Override
     public void startSelectionMode() {
 

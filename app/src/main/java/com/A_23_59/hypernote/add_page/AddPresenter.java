@@ -9,44 +9,41 @@ public class AddPresenter implements AddContract.PresenterLayer {
 
     AddContract.ViewLayer viewLayer;
 
-   public static long id=0;
+    public static long id = 0;
+
     @Override
     public void onAttach(AddContract.ViewLayer view) {
 
-        viewLayer=view;
+        viewLayer = view;
     }
 
     @Override
     public void onDetach() {
 
-        this.viewLayer=null;
+        this.viewLayer = null;
     }
 
     @Override
     public void onConfirmButtonClicked(String taskDetail, Add_Activity add_activity) {
 
-        if (taskDetail.length()>0){
+        if (taskDetail.length() > 0) {
 
-            Intent intent=new Intent();
+            Intent intent = new Intent();
 
-            Task task=new Task();
+            Task task = new Task();
 
             task.setTaskTitle(taskDetail);
 
-            intent.putExtra("task",task);
+            intent.putExtra("task", task);
 
-            add_activity.setResult(Activity.RESULT_OK,intent);
+            add_activity.setResult(Activity.RESULT_OK, intent);
 
             add_activity.finish();
-        }
-
-        else
+        } else
             viewLayer.showErrorSnackBar();
 
 
-
     }
-
 
 
 }

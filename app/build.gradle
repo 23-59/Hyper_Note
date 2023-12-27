@@ -3,16 +3,16 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 34
 
 
 
     defaultConfig {
         applicationId "com.A_23_59.hypernote"
         minSdk 21
-        targetSdk 32
-        versionCode 3
-        versionName "1.2"
+        targetSdk 34
+        versionCode 4
+        versionName "1.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

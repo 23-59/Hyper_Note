@@ -17,10 +17,18 @@
             android:layout_height="wrap_content"
             android:background="@color/purple_700"
             android:elevation="12dp"
-            app:title="@string/edit_task"
             app:titleMarginStart="8dp"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
             app:titleTextColor="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/edit_task"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/btn_confirm_edit"
@@ -69,7 +77,6 @@
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:fontFamily="@font/intel_arabic_regular"
             android:gravity="top|start"
             android:hint="@string/task_detail"
             android:inputType="textMultiLine"

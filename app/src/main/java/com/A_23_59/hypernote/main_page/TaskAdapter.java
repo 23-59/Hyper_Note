@@ -6,26 +6,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.A_23_59.hypernote.R;
 import com.A_23_59.hypernote.model.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
+public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     public List<Task> taskList;
 
-    boolean selectedStatus;
+    boolean selectedStatusIsEnabled;
 
     boolean checkAllStatus;
 
-    char selectAllStatus='A';
+    String selectAllStatus = "Deselect";
 
     boolean resetStatus;
 
-    private List<Task> selectedTasks=new ArrayList<>();
+    private List<Task> selectedTasks = new ArrayList<>();
 
     public List<Task> getSelectedTasks() {
         return selectedTasks;
@@ -37,11 +40,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
     private static final String TAG = "TaskAdapter";
 
-    TaskAdapter(List<Task> tasks, SendMoreDataToMainActivity moreDataToMainActivity, SelectedItems selectedItems){
+    TaskAdapter(List<Task> tasks, SendMoreDataToMainActivity moreDataToMainActivity, SelectedItems selectedItems) {
 
-        taskList=new ArrayList<>(tasks);
+        taskList = new ArrayList<>(tasks);
 
-        this.moreDataToMainActivity=moreDataToMainActivity;
+        this.moreDataToMainActivity = moreDataToMainActivity;
 
         this.selectedItems = selectedItems;
     }
@@ -52,10 +55,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
         Log.i(TAG, "onCreateViewHolder ");
 
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item_layout,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item_layout, parent, false));
 
     }
-
 
 
     @Override
@@ -63,11 +65,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
         holder.bindTask(taskList.get(position));
 
-          if (selectedStatus && taskList.get(position).isSelectedMode())
-             holder.selectButton.setImageResource(R.drawable.ic_round_check_circle_24);
+        if (selectedStatusIsEnabled && taskList.get(position).isSelectedMode())
+            holder.selectButton.setImageResource(R.drawable.ic_round_check_circle_24);
 
-       else
-           holder.selectButton.setImageResource(R.drawable.ic_baseline_radio_button_unchecked_24);
+        else
+            holder.selectButton.setImageResource(R.drawable.ic_baseline_radio_button_unchecked_24);
 
         Log.i(TAG, "onBindViewHolder ");
     }
@@ -87,7 +89,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
         private final ImageButton selectButton;
 
-        short count=0;
+        short count = 0;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -96,15 +98,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
             Log.i(TAG, "ViewHolder");
 
-            taskCheckStatus =itemView.findViewById(R.id.task_info);
+            taskCheckStatus = itemView.findViewById(R.id.task_info);
 
-            more=itemView.findViewById(R.id.image_button_more);
+            more = itemView.findViewById(R.id.image_button_more);
 
-            selectButton=itemView.findViewById(R.id.btn_select_check);
+            selectButton = itemView.findViewById(R.id.btn_select_check);
         }
 
 
-        public void bindTask(Task task){
+        public void bindTask(Task task) {
 
             Log.i(TAG, "bindTask: reached");
 
@@ -118,7 +120,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
             more.setOnClickListener(view -> moreDataToMainActivity.onMoreClicked(task));
 
-            if (selectedStatus) {
+            if (selectedStatusIsEnabled) {
 
                 more.setEnabled(false);
 
@@ -129,9 +131,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 selectButton.setVisibility(View.VISIBLE);
 
                 selectButton.setEnabled(true);
-            }
-
-            else {
+            } else {
 
                 taskCheckStatus.setEnabled(true);
 
@@ -154,20 +154,20 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 taskCheckStatus.setChecked(true);
 
 
-             if (selectAllStatus == 'B') {
+            if (selectAllStatus == "Selected All") {
 
-                if (selectedTasks.isEmpty()){
+                if (selectedTasks.isEmpty()) {
 
                     selectedTasks.addAll(taskList);
                 }
 
-                for (Task task1:selectedTasks) {
+                for (Task task1 : selectedTasks) {
 
                     task1.setSelectedMode(true);
 
                     selectedItems.onItemAddedToAdapterSelection(task1);
 
-                    count=1;
+                    count = 1;
                 }
 
                 selectedItems.onItemAddedToAdapterSelection(String.valueOf(selectedTasks.size()));
@@ -175,98 +175,93 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 selectButton.setImageResource(R.drawable.ic_round_check_circle_24);
 
 
-            }
-
-            else if (selectAllStatus=='C'|| !selectedStatus){
+            } else if (selectAllStatus == "Deselected All" || !selectedStatusIsEnabled) {
 
                 selectButton.setOnClickListener(null);
 
                 selectedTasks.removeAll(taskList);
 
-                for (Task task1:taskList) {
+                for (Task task1 : taskList) {
 
                     task1.setSelectedMode(false);
 
                     selectedItems.onItemAddedToAdapterSelection(task1);
 
-                    count=0;
+                    count = 0;
 
                 }
 
 
+                selectedItems.onItemAddedToAdapterSelection(String.valueOf(selectedTasks.size()));
 
-
-                    selectedItems.onItemAddedToAdapterSelection(String.valueOf(selectedTasks.size()));
-
-                    selectButton.setImageResource(R.drawable.ic_baseline_radio_button_unchecked_24);
+                selectButton.setImageResource(R.drawable.ic_baseline_radio_button_unchecked_24);
 
 
             }
 
-           taskCheckStatus.setOnCheckedChangeListener((compoundButton, b) -> {
+            taskCheckStatus.setOnCheckedChangeListener((compoundButton, b) -> {
 
-               task.setCompleted(compoundButton.isChecked());
+                task.setCompleted(compoundButton.isChecked());
 
-               moreDataToMainActivity.updateCheckInDataBase(task);
-           });
+                moreDataToMainActivity.updateCheckInDataBase(task);
+            });
 
-                selectButton.setOnClickListener(view -> {
+            selectButton.setOnClickListener(view -> {
 
-                    count++;
+                count++;
 
-                    switch (count){
-
-
-                        case 1:
-
-                            selectButton.setImageResource(R.drawable.ic_round_check_circle_24);
-
-                            task.setSelectedMode(true);
-
-                            selectedTasks.add(task);
-
-                            String size1=String.valueOf(selectedTasks.size());
-
-                            selectedItems.onItemAddedToAdapterSelection(size1,task);
-
-                            break;
-
-                        case 2:
-
-                            selectButton.setImageResource(R.drawable.ic_baseline_radio_button_unchecked_24);
-
-                            task.setSelectedMode(false);
-
-                            selectedTasks.remove(task);
-
-                            String size2=String.valueOf(selectedTasks.size());
-
-                            selectedItems.onItemAddedToAdapterSelection(size2,task);
-
-                            count=0;
-
-                            break;
-
-                    }
+                switch (count) {
 
 
-                });
+                    case 1:
 
+                        selectButton.setImageResource(R.drawable.ic_round_check_circle_24);
+
+                        task.setSelectedMode(true);
+
+                        selectedTasks.add(task);
+
+                        String size1 = String.valueOf(selectedTasks.size());
+
+                        selectedItems.onItemAddedToAdapterSelection(size1, task);
+
+                        break;
+
+                    case 2:
+
+                        selectButton.setImageResource(R.drawable.ic_baseline_radio_button_unchecked_24);
+
+                        task.setSelectedMode(false);
+
+                        selectedTasks.remove(task);
+
+                        String size2 = String.valueOf(selectedTasks.size());
+
+                        selectedItems.onItemAddedToAdapterSelection(size2, task);
+
+                        count = 0;
+
+                        break;
+
+                }
+
+
+            });
 
 
         }
     }
 
-    public void addTask_Adapter(Task task){
+    public void addTask_Adapter(Task task) {
 
-        taskList.add(0,task);
+        taskList.add(0, task);
 
         notifyItemInserted(0);
     }
 
-    public void deleteTask(Task task){
+    public void deleteTask(Task task) {
 
-        int deleteIndex= taskList.indexOf(task);
+        int deleteIndex = taskList.indexOf(task);
 
         taskList.remove(deleteIndex);
 
@@ -274,57 +269,56 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
     }
 
-    public void editTask(Task task){
+    public void editTask(Task task) {
 
-       int updateIndex= taskList.indexOf(task);
+        int updateIndex = taskList.indexOf(task);
 
-       taskList.set(updateIndex,task);
+        taskList.set(updateIndex, task);
 
-       notifyItemChanged(updateIndex);
+        notifyItemChanged(updateIndex);
 
     }
 
-    public void searchTask(List<Task>searchedTask){
+    public void searchTask(List<Task> searchedTask) {
 
-        taskList=searchedTask;
+        taskList = searchedTask;
 
         notifyDataSetChanged();
     }
 
 
-
-    public void deleteAll(){
+    public void deleteAll() {
 
         taskList.clear();
 
         notifyDataSetChanged();
     }
 
-    public void selectAll(){
+    public void selectAll() {
 
-        selectAllStatus='B';
-
-        notifyDataSetChanged();
-    }
-
-    public void deselectAll(){
-
-        selectAllStatus ='C';
+        selectAllStatus = "Selected All";
 
         notifyDataSetChanged();
     }
 
-    public void resetAll(){
+    public void deselectAll() {
 
-       resetStatus=true;
+        selectAllStatus = "Deselected All";
 
-       notifyDataSetChanged();
+        notifyDataSetChanged();
+    }
+
+    public void resetAll() {
+
+        resetStatus = true;
+
+        notifyDataSetChanged();
 
     }
 
-    public void checkAll(){
+    public void checkAll() {
 
-        checkAllStatus=true;
+        checkAllStatus = true;
 
         notifyDataSetChanged();
 
@@ -332,34 +326,34 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
 
     /**
-     * this method will turn on selection mode so select button visibility 
+     * this method will turn on selection mode so select button visibility
      * will be true,
-     * when an task is selected it will be added to 
+     * when an task is selected it will be added to
      * selected list ,and task checkbox will be disabled in order to prevent accidental check change
      */
-    public void startSelection(){
+    public void startSelection() {
 
-        selectedStatus=true;
+        selectedStatusIsEnabled = true;
 
         notifyDataSetChanged();
     }
 
-    public void exitSelection(){
+    public void exitSelection() {
 
-        selectedStatus=false;
+        selectedStatusIsEnabled = false;
 
-        selectAllStatus='A';
+        selectAllStatus = "Cancel Selection";
 
         selectedTasks.clear();
 
-        resetStatus=false;
+        resetStatus = false;
 
         selectedItems.onItemAddedToAdapterSelection(String.valueOf(selectedTasks.size()));
 
         notifyDataSetChanged();
     }
 
-    public void deleteSelectedItems(){
+    public void deleteSelectedItems() {
 
         taskList.removeAll(selectedTasks);
 
@@ -381,12 +375,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
         void onItemAddedToAdapterSelection(String itemsSize);
 
-        void onItemAddedToAdapterSelection( Task task);
+        void onItemAddedToAdapterSelection(Task task);
 
-        void onItemAddedToAdapterSelection(String itemsSize,Task task);
+        void onItemAddedToAdapterSelection(String itemsSize, Task task);
 
         void onSelectionIsFinished();
-
 
 
     }
