@@ -8,6 +8,8 @@
     <string name="empty_state_title">Task List is Empty !</string>
     <string name="empty_state_description">if you have some undone works, add some task to stay focused on your works :)</string>
     <string name="task_detail">Task_Details…</string>
+    <string name="confirm">Apply Changes</string>
+    <string name="add">Add</string>
     <string name="error_toast">task detail cannot be empty</string>
     <string name="items_selected"> Items Selected</string>
     <string name="select">Select</string>

@@ -11,10 +11,15 @@
         android:theme="@style/Theme.HyperNote" >
         <activity
             android:name=".edit_page.EditActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            />
+
         <activity
             android:name=".add_page.Add_Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity
             android:name=".main_page.MainActivity"
             android:exported="true"

@@ -9,6 +9,8 @@
     <string name="empty_state_title">لیست وظایف خالیه !</string>
     <string name="empty_state_description">اگه کاری میخوای انجام بدی‌ ، میتونی اونا رو به اینجا اضافه کنی تا حواست به کارهات باشه :)</string>
     <string name="task_detail">متن وظیفه را وارد کنید</string>
+    <string name="confirm">اعمال تغییرات</string>
+    <string name="add">افزودن</string>
     <string name="error_toast">جزئیات وظیفه نمی تواند خالی باشد</string>
     <string name="items_selected"> تعداد انتخاب شده</string>
     <string name="select">انتخاب</string>

@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
-
-
 import com.A_23_59.hypernote.R;
 import com.A_23_59.hypernote.main_page.MainActivity;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Add_Activity extends AppCompatActivity implements AddContract.ViewLayer {
@@ -34,17 +33,11 @@ public class Add_Activity extends AppCompatActivity implements AddContract.ViewL
 
         setSupportActionBar(toolbar);
 
-        ImageButton confirm=findViewById(R.id.btn_confirm_add);
+        ExtendedFloatingActionButton confirm=findViewById(R.id.btn_confirm_add);
 
         taskDetail=findViewById(R.id.et_task_detail_add);
 
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                presenter.onConfirmButtonClicked(taskDetail.getText().toString(), Add_Activity.this);
-            }
-        });
+        confirm.setOnClickListener(view -> presenter.onConfirmButtonClicked(taskDetail.getText().toString(), Add_Activity.this));
     }
 
     @Override
